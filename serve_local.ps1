@@ -256,6 +256,10 @@ while ($true) {
             $requestPath = if ([System.IO.File]::Exists((Join-Path $root "index.html"))) { "/index.html" } else { "/standalone_app.html" }
         }
 
+        if ($requestPath.StartsWith("/web/", [System.StringComparison]::OrdinalIgnoreCase)) {
+            $requestPath = $requestPath.Substring(4)
+        }
+
         $relativePath = [Uri]::UnescapeDataString($requestPath.TrimStart("/")).Replace("/", [System.IO.Path]::DirectorySeparatorChar)
         $filePath = [System.IO.Path]::GetFullPath((Join-Path $root $relativePath))
         $rootPath = [System.IO.Path]::GetFullPath($root).TrimEnd("\", "/") + [System.IO.Path]::DirectorySeparatorChar

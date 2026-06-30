@@ -16,6 +16,10 @@ htmlcov/
 
 build/
 downloads/
+!downloads/
+!downloads/healthcare-agent-local.zip
+!web/downloads/
+!web/downloads/healthcare-agent-local.zip
 qa-screenshots/
 *.log
 server-*.log

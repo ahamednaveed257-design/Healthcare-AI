@@ -2343,7 +2343,7 @@ function localRecordPayload(result = state.recentResult) {
   const patientId = elements.patientId.value.trim() || access.patient_id || "demo-patient";
   return {
     app: "Healthcare Agent",
-    app_version: "20260629-feature35",
+    app_version: "20260630-feature37",
     exported_at: new Date().toISOString(),
     patient_id: patientId,
     access_mode: access.mode || "local",

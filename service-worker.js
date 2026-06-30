@@ -1,16 +1,15 @@
-const CACHE_NAME = "healthcare-agent-v53";
+const CACHE_NAME = "healthcare-agent-v56";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./app.css",
   "./app.js",
-  "./manifest.webmanifest?v=20260629-feature35",
+  "./manifest.webmanifest?v=20260630-feature37",
   "./icons/logo.svg",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./data/medical_faqs.json",
-  "./data/drugs.json",
-  "./downloads/healthcare-agent-local.zip"
+  "./data/drugs.json"
 ];
 
 self.addEventListener("install", (event) => {

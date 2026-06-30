@@ -8,6 +8,7 @@ $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $buildRoot = Join-Path $projectRoot "build"
 $stage = Join-Path $buildRoot "healthcare-agent-local"
 $zipPath = Join-Path $buildRoot $OutputName
+$rootZip = Join-Path $projectRoot "downloads\$OutputName"
 $webZip = Join-Path $projectRoot "web\downloads\$OutputName"
 
 function Copy-DirectoryContents {
@@ -92,7 +93,9 @@ if (Test-Path -LiteralPath $zipPath) {
 Compress-Archive -LiteralPath $stage -DestinationPath $zipPath -Force
 
 New-Item -ItemType Directory -Force -Path (Split-Path $webZip -Parent) | Out-Null
+New-Item -ItemType Directory -Force -Path (Split-Path $rootZip -Parent) | Out-Null
 Copy-Item -LiteralPath $zipPath -Destination $webZip -Force
+Copy-Item -LiteralPath $zipPath -Destination $rootZip -Force
 
-Get-Item -LiteralPath $zipPath, $webZip |
+Get-Item -LiteralPath $zipPath, $rootZip, $webZip |
     Select-Object FullName, Length, LastWriteTime
